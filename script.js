@@ -1,5 +1,6 @@
 var points = 0;
 var activeQ = 0;
+// I like that you made an array of objects, objects are more scalable and modular then an array of arrays would be
 var questions = [
 	{
 	 question: 'Name of Tony Sopranos boat in TV show The Sopranos' ,
@@ -52,7 +53,7 @@ var questions = [
 	}
 ];
 
-//=========================================Fisher-Yates Algorithm 
+//=========================================Fisher-Yates Algorithm
 function shuffle(array) {
     var counter = array.length, temp, index;
 
@@ -76,16 +77,14 @@ shuffle(questions);
 
 
 
-//=================hover buttons 
+//=================hover buttons
 $('#begin').hover(function(){
 	$(this).text('you ready?')
-}
-,
-function(){
+}, function(){
 	$(this).text('Begin')
-}
+	}
 );
-
+// i would reorg this code below in the way i did above for the hovers. Not a big deal either way, just a bit more readable
 $('#resetDizzle').hover(function(){
 	$(this).val('you sure?')
 }
@@ -109,9 +108,11 @@ function(){
 
 
 //============================================reset button
+// what is your affinity for the word Dizzle, hah
 $('#resetDizzle').on('click' , function(){
 	points = 0;
 	activeQ = 0;
+	// i noticed there are alot of alerts for your quiz. I think it'd be really nice if we alerted the user through some HTML element instead. So i'm not having to click every question
 	alert('score reset you are now at '+points)
 	$('.question').html(points);
 	$('.actualQuestion').html('')
@@ -125,7 +126,7 @@ $('#begin').on('click' , function(){
 
 		$('.actualQuestion').html(questions[activeQ].question);
 		console.log(questions[activeQ].question);
-		
+
 });
 
 $('#submitButton').on('click' , function(){
@@ -133,7 +134,7 @@ $('#submitButton').on('click' , function(){
 			if (answerDizzle === questions[activeQ].answer) {
 				points++;
 				alert('Got it - currently you have a score of '+points);
-				$('.question').html(points);							
+				$('.question').html(points);
 			}
 			else {
 				points -= 1;
@@ -142,6 +143,7 @@ $('#submitButton').on('click' , function(){
 			}
 
 			if (activeQ < questions.length-1) {
+				// I like how your iterating through each question here
 				activeQ++;
 				$('.actualQuestion').html(questions[activeQ].question);
 			}
@@ -160,15 +162,15 @@ $('#promptButton').on('click' , function() {
 
 for (var i = 0 ; i < questions.length ; i++) {
 
- 		
-					
+
+
 		var answerDizzle = prompt(questions[i].question+'?')
 			if (answerDizzle === questions[i].answer) {
 				points++;
 				alert('Good job, currently you have a score of '+points);
-				$('.question').html(points);							
+				$('.question').html(points);
 			}
-			
+
 			else if (answerDizzle === null){
 				break
 			}
@@ -178,8 +180,7 @@ for (var i = 0 ; i < questions.length ; i++) {
 				alert('WRONG, make sure to watch your spelling and caps.  Correct answer was '+questions[i].answer);
 				$('.question').html(points);
 			}
-			
+
 		}
 			$('.actualQuestion').html('Game Over, your final score was '+points )
 });
-
