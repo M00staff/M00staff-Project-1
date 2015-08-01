@@ -52,7 +52,7 @@ var questions = [
 	}
 ];
 
-//=========================================Fisher-Yates Algorithm 
+//=========================================Fisher-Yates Algorithm
 function shuffle(array) {
     var counter = array.length, temp, index;
 
@@ -76,7 +76,7 @@ shuffle(questions);
 
 
 
-//=================hover buttons 
+//=================hover buttons
 $('#begin').hover(function(){
 	$(this).text('Ready?')
 }
@@ -125,7 +125,7 @@ $('#begin').on('click' , function(){
 
 		$('.actualQuestion').html(questions[activeQ].question);
 		console.log(questions[activeQ].question);
-		
+
 });
 
 $('#submitButton').on('click' , function(){
@@ -135,11 +135,11 @@ $('#submitButton').on('click' , function(){
 				points++;
 				alert('Got it - currently you have a score of '+points);
 				$('.question').html(points);
-				$('#textBox').val('')							
+				$('#textBox').val('')
 			}
 			else {
 				points -= 1;
-				alert('WRONG!! Watch your spelling and caps.  Corerct answer was '+questions[activeQ].answer);
+				alert('WRONG!! Watch your spelling.  The correct answer was '+questions[activeQ].answer);
 				$('.question').html(points);
 				$('#textBox').val('')
 			}
@@ -163,15 +163,15 @@ $('#promptButton').on('click' , function() {
 
 for (var i = 0 ; i < questions.length ; i++) {
 
- 		
+
 		var answerZizzle = prompt(questions[i].question+'?')
 		var answerDizzle = answerZizzle.toLowerCase()
 			if (answerDizzle === questions[i].answer) {
 				points++;
 				alert('Good job, currently you have a score of '+points);
-				$('.question').html(points);							
+				$('.question').html(points);
 			}
-			
+
 			else if (answerDizzle === null){
 				break
 			}
@@ -181,7 +181,7 @@ for (var i = 0 ; i < questions.length ; i++) {
 				alert('WRONG, make sure to watch your spelling and caps.  Correct answer was '+questions[i].answer);
 				$('.question').html(points);
 			}
-			
+
 		}
 			$('.actualQuestion').html('Game Over, your final score was '+points )
 });
@@ -195,4 +195,3 @@ for (var i = 0 ; i < questions.length ; i++) {
             jQuery('#submitButton').focus().click();
         }
     });
-
