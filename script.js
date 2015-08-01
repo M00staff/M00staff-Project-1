@@ -134,12 +134,14 @@ $('#submitButton').on('click' , function(){
 			if (answerDizzle === questions[activeQ].answer) {
 				points++;
 				alert('Got it - currently you have a score of '+points);
-				$('.question').html(points);							
+				$('.question').html(points);
+				$('#textBox').val('')							
 			}
 			else {
 				points -= 1;
 				alert('WRONG!! Watch your spelling and caps.  Corerct answer was '+questions[activeQ].answer);
 				$('.question').html(points);
+				$('#textBox').val('')
 			}
 
 			if (activeQ < questions.length-1) {
